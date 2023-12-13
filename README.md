@@ -1,6 +1,3 @@
-# jsTaskRunner
-Tutorial for Javascript Task Runner - Grunt, Gulp
-
 # Javascript Task Runner
 1. Grunt Learning: `git checkout grunt`
 2. Gulp Learning: TODO
