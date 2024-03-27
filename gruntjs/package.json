@@ -1,0 +1,30 @@
+{
+  "name": "gruntjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 16.15.1 <=18.15.0"
+  },
+  "scripts": {
+    "grunt:build": "grunt jshint",
+    "grunt:clean": "grunt clean",
+    "grunt:uglify": "grunt uglify",
+    "grunt:babel": "grunt babel"
+  },
+  "keywords": [
+    "grunt"
+  ],
+  "author": "Biswasindhu Mandal",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.6.1",
+    "grunt-babel": "^8.0.0",
+    "grunt-cleanempty": "^1.0.4",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-jshint": "^3.2.0",
+    "grunt-contrib-nodeunit": "^5.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "jshint": "^2.13.6"
+  }
+}
