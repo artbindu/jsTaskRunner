@@ -1,0 +1,23 @@
+{
+    // Configure glob patterns for excluding files and folders.
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/.git": true,
+        "**/.DS_Store": true,
+        ".vscode": true
+    },
+
+    // Controls whether the minimap is shown.
+    "editor.minimap.enabled": false,
+
+    // file nesting config
+    // Controls whether file nesting is enabled in the Explorer. 
+    "explorer.fileNesting.enabled": true,
+    // Controls whether file nests are automatically expanded.
+    "explorer.fileNesting.expand": false,
+    // Controls nesting of files in the Explorer.
+    "explorer.fileNesting.patterns": {
+        "package.json": "*.json",
+        "LICENSE": ".gitignore, *.md"
+    }
+}

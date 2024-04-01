@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "grunt-es6-module-transpiler": "^0.6.0"
+  }
+}

@@ -87,7 +87,7 @@ module.exports = function (grunt) {
 }
 ```
 - Plugins - `grunt-contrib-clean`: 
-- Plugins - ``
+- Plugins - `grunt-es6-module-transpiler`
 - Plugins - ``
 - Plugins - ``
 - Plugins - ``
