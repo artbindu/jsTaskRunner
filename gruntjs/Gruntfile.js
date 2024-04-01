@@ -10,7 +10,7 @@ module.exports = function (grunt) {
                 options: {
                     stripBanners: true,
                     banner: `/** \n` +    
-                        `* Copyright 2023-2024 <%= pkg.author.name %> \n` +  
+                        `* Copyright © 2024 <%= pkg.author.name %> \n` +  
                         `* Licensed under MIT (<%= pkg.license_url %>) \n` +  
                         `* <%= pkg.buildInfo.dev.js %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>  \n` + 
                         `*/ \n` +
@@ -24,7 +24,7 @@ module.exports = function (grunt) {
                 options: {
                     stripBanners: true,
                     banner: `/** \n` +    
-                        `* Copyright 2023-2024 <%= pkg.author.name %> \n` +  
+                        `* Copyright © 2024 <%= pkg.author.name %> \n` +  
                         `* Licensed under MIT (<%= pkg.license_url %>) \n` +  
                         `* <%= pkg.buildInfo.dev.css %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>  \n` + 
                         `*/ \n`,
@@ -48,11 +48,10 @@ module.exports = function (grunt) {
             prod: {
                 options: {
                     banner: `/** \n` +    
-                        `* Copyright 2023-2024 <%= pkg.author.name %> \n` +  
+                        `* Copyright © 2024 <%= pkg.author.name %> \n` +  
                         `* Licensed under MIT (<%= pkg.license_url %>) \n` +  
                         `* <%= pkg.buildInfo.prod.js %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>  \n` + 
-                        `*/ \n` +
-                        "'use strict';\n",
+                        `*/ \n`,
                 },
                 src: '<%= pkg.buildInfo.dev.repo %>/<%= pkg.buildInfo.dev.js %>',
                 dest: '<%= pkg.buildInfo.prod.repo %>/<%= pkg.buildInfo.prod.js %>'
@@ -66,12 +65,6 @@ module.exports = function (grunt) {
             build: '<%= pkg.buildInfo.dev.repo %>',
             prod: '<%= pkg.buildInfo.prod.repo %>',
             all: '<%= pkg.buildInfo.prod.repo %>'
-        },
-        cleanempty: {
-            options: {
-                force: true
-            },
-            src: ['src/**/*', 'public/*'],
         },
         jshint: {
             files: ['src/**/*.js', 'test/**/*.js'],
@@ -115,17 +108,9 @@ module.exports = function (grunt) {
 
     
 
-    // Grunt Actual Task
+    // Grunt Actual Task - Final Task Loading
     grunt.registerTask('grunt-build', ['clean:build', 'concat:js', 'concat:css', 'uglify:prod']);
 
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
-
-
-    // Default task(s).
-    // grunt.registerTask('default', ['cleanAll']);
-    // Show Logs
-    grunt.registerMultiTask('log', 'Log stuff.', function (arr) {
-        grunt.log.writeln('Grunt Logs: ', this.target + ': ' + this.data, arr);
-    });
 }

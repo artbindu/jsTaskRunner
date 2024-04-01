@@ -20,7 +20,7 @@
     }
   },
   "scripts": {
-    "grunt:all": "grunt grunt-build"
+    "grunt": "grunt grunt-build"
   },
   "keywords": [
     "grunt"
