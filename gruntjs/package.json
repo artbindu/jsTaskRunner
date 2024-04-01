@@ -6,22 +6,38 @@
   "engines": {
     "node": ">= 16.15.1 <=18.15.0"
   },
+  "buildInfo": {
+    "repo": "build",
+    "dev": {
+      "repo": "build/dev",
+      "js": "bundle.js",
+      "css": "style.css"
+    },
+    "prod": {
+      "repo": "build/prod",
+      "js": "bundle.js",
+      "css": "style.css"
+    }
+  },
   "scripts": {
-    "grunt:build": "grunt jshint",
-    "grunt:clean": "grunt clean",
-    "grunt:uglify": "grunt uglify",
-    "grunt:babel": "grunt babel"
+    "grunt:all": "grunt grunt-build"
   },
   "keywords": [
     "grunt"
   ],
-  "author": "Biswasindhu Mandal",
-  "license": "ISC",
+  "author": {
+    "name": "Biswasindhu Mandal",
+    "email": "sindhu.online.24x7@gmail.com​",
+    "url": "https://artbindu.github.io/artbindu"
+  },
+  "license": "MIT",
+  "license_url": "https://github.com/artbindu/jsTaskRunner/blob/main/README.md",
   "devDependencies": {
     "grunt": "^1.6.1",
     "grunt-babel": "^8.0.0",
     "grunt-cleanempty": "^1.0.4",
     "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-concat": "^2.1.0",
     "grunt-contrib-jshint": "^3.2.0",
     "grunt-contrib-nodeunit": "^5.0.0",
     "grunt-contrib-uglify": "^5.2.2",

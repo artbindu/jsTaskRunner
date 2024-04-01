@@ -5,18 +5,18 @@
 https://www.youtube.com/watch?v=K5z75xaIakA
 
 ## 1. Install grunt
-    `npm install -g grunt-cli`
+> `npm install -g grunt-cli`
 ## 2. pacakge.json
-    `npm init -y`
+> `npm init -y`
 ## 3. devDependencies:
 Installing grunt & gruntplugins:
-    `npm i grunt --save-dev`
-    `npm i grunt-contrib-jshint --save-dev`
-    `npm i grunt-contrib-nodeunit --save-dev`
-    `npm i grunt-contrib-uglify --save-dev`
+>    `npm i grunt --save-dev`<br>
+>    `npm i grunt-contrib-jshint --save-dev`<br>
+>    `npm i grunt-contrib-nodeunit --save-dev`<br>
+>    `npm i grunt-contrib-uglify --save-dev`<br>
 
 ## 4. Create Grunt File
-  `Gruntfile.js`
+>  `Gruntfile.js`
 
 ## 5. [Grunt Config](https://gruntjs.com/api/grunt#grunt.initconfig):
    1. Config
@@ -29,7 +29,7 @@ Installing grunt & gruntplugins:
    6. Miscellaneous
 
 ## 6. Create your code:
-    - https://jshint.com/install/
+>     https://jshint.com/install/
 
 
 ## [Grunt Plugins](https://gruntjs.com/plugins)
@@ -97,3 +97,54 @@ module.exports = function (grunt) {
 - Plugins - ``
 - Plugins - ``
 - Plugins - ``
+  
+-- ---------------------------------
+
+- Perform Repetitive tasks
+```
+ ->  Prefixing CSS Rules
+ ->  Compiling SASS files to CSS
+ ->  Minify JS/CSS files
+ ->  Concatenating Files
+```
+
+Steps:
+```
+  - Install Node.js
+  - Install grunt-cli globally (npm i grunt-cli -g)
+  - Create package.json files (npm init)
+  - Install grunt locally (npm i grunt --save-dev)
+  - Create a Gruntfile.js file 
+        This is a module, create everything one by one
+  - Install plugins (a.e: npm i grunt-contrib-uglify --save-dev)
+```
+
+Why GruntFile.js
+```
+    - Configures our tasks and tells plugins where to find certain files
+    - Load plugins into the file (e.g uglify)
+    - Register tasks which need to be run
+```
+
+Register Basic Grunt Tasks:
+```
+    // Basic Register Tasks
+    grunt.registerTask('run', function() {
+        console.log('I\'m running');
+    });
+    grunt.registerTask('sleep', function() {
+        console.log('I\'m Sleeping');
+    });
+    grunt.registerTask('all', ['sleep', 'run']);
+
+
+-----------Run in console-------------------
+    grunt run;
+    grunt sleep;
+    grunt all;
+```
+
+Add plugins: `grunt-contrib-concat`
+```
+    
+```

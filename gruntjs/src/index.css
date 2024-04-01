@@ -1,0 +1,9 @@
+body {
+    background-color: aqua;
+    /* background-image: url('./images/bg.avif'); */
+}
+
+.cl1 {
+    color: red;
+    font-size: 100px;
+}

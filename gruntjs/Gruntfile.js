@@ -1,8 +1,38 @@
 
 module.exports = function (grunt) {
-    // Initialized Config Data
+    // Initialization Grunt Configuration 
     grunt.initConfig({
+        // pass in options to plugins, references to files etc.
         pkg: grunt.file.readJSON('package.json'),
+        concat: {
+            // task name
+            js: {
+                options: {
+                    stripBanners: true,
+                    banner: `/** \n` +    
+                        `* Copyright 2023-2024 <%= pkg.author.name %> \n` +  
+                        `* Licensed under MIT (<%= pkg.license_url %>) \n` +  
+                        `* <%= pkg.buildInfo.dev.js %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>  \n` + 
+                        `*/ \n` +
+                        "'use strict';\n",
+                },
+                src: ['src/**/*.js'],
+                dest: '<%= pkg.buildInfo.dev.repo %>/<%= pkg.buildInfo.dev.js %>'
+            },
+            // task name
+            css: {
+                options: {
+                    stripBanners: true,
+                    banner: `/** \n` +    
+                        `* Copyright 2023-2024 <%= pkg.author.name %> \n` +  
+                        `* Licensed under MIT (<%= pkg.license_url %>) \n` +  
+                        `* <%= pkg.buildInfo.dev.css %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>  \n` + 
+                        `*/ \n`,
+                },
+                src: ['src/**/*.css'],
+                dest: '<%= pkg.buildInfo.dev.repo %>/<%= pkg.buildInfo.dev.css %>'
+            }
+        },
         babel: {
             options: {
               sourceMap: true,
@@ -13,19 +43,19 @@ module.exports = function (grunt) {
                 'build/build.js': 'src/**/*.js'
               }
             }
-          },
+        },
         uglify: {
-            options: {
-                banner: `
-                /**
-                * Packages: <%= pkg.name %> 
-                * Date:<%= grunt.template.today("yyyy-mm-dd hh:mm:ss") %> 
-                * By Biswasindhu Mandal 
-                */\n`
-            },
-            build: {
-                src: ['src/*.js'],
-                dest: 'build/<%= pkg.name %>.min.js'
+            prod: {
+                options: {
+                    banner: `/** \n` +    
+                        `* Copyright 2023-2024 <%= pkg.author.name %> \n` +  
+                        `* Licensed under MIT (<%= pkg.license_url %>) \n` +  
+                        `* <%= pkg.buildInfo.prod.js %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>  \n` + 
+                        `*/ \n` +
+                        "'use strict';\n",
+                },
+                src: '<%= pkg.buildInfo.dev.repo %>/<%= pkg.buildInfo.dev.js %>',
+                dest: '<%= pkg.buildInfo.prod.repo %>/<%= pkg.buildInfo.prod.js %>'
             }
         },
         clean: {
@@ -33,7 +63,9 @@ module.exports = function (grunt) {
                 'force': true,
                 'no-write': false
             },
-            build: ['build']
+            build: '<%= pkg.buildInfo.dev.repo %>',
+            prod: '<%= pkg.buildInfo.prod.repo %>',
+            all: '<%= pkg.buildInfo.prod.repo %>'
         },
         cleanempty: {
             options: {
@@ -56,16 +88,37 @@ module.exports = function (grunt) {
         }
     });
 
-    // Load the plugin that provides the "uglify" task.
-    // Minify Source File
+    // Load the plugins and register tasks
+
+    // Basic Register Tasks
+    grunt.registerTask('start', function(txt) {
+        console.log(`============== Start executing task: ${txt} ===============`);
+    });
+    grunt.registerTask('end', function(txt) {
+        console.log(`============= Complete executing task: ${txt} =============`);
+    });
+    grunt.registerTask('basic-task', ['start:start_task', 'end:end_task']);
+
+    // grunt-contrib-concat: Add Plugins & Register task
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.registerTask('concat-js', ['start:js_bundle', 'concat:js', 'end:js_bundle']);
+    grunt.registerTask('concat-css', ['start:css_bundle', 'concat:css', 'end:css_bundle']);
+    grunt.registerTask('concat-all', ['concat-js', 'concat-css']);
+
+    // Minify: Add plugins & register task
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.registerTask('default', ['uglify']);
 
-    // Clean files and folders
+    // Clean: Add plugins & register task
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.registerTask('default', ['clean']);
+    grunt.registerTask('clean-build', ['start:clean_build_repo', 'clean:build', 'end:clean_build_repo']);
 
     
+
+    // Grunt Actual Task
+    grunt.registerTask('grunt-build', ['clean:build', 'concat:js', 'concat:css', 'uglify:prod']);
+
+
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
 
