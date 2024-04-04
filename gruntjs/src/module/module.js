@@ -1,4 +1,4 @@
-// import './module.css';
+import './module.css';
 
 function addImage() {
     var x = document.createElement("img");
@@ -12,8 +12,7 @@ function addImage() {
     return el;
 }
 
-// export 
-function module() {
+export function module() {
     console.log('This is Child 001');
     var el = document.createElement("h2");
     el.className = "cl2";

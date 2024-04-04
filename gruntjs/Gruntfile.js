@@ -62,15 +62,16 @@ module.exports = function (grunt) {
                 'force': true,
                 'no-write': false
             },
-            build: '<%= pkg.buildInfo.dev.repo %>',
+            dev: '<%= pkg.buildInfo.dev.repo %>',
             prod: '<%= pkg.buildInfo.prod.repo %>',
             all: '<%= pkg.buildInfo.prod.repo %>'
         },
         jshint: {
-            files: ['src/**/*.js', 'test/**/*.js'],
-            options: {
-                globals: {
-                    jQuery: true
+            src: {
+                src: ['src/**/*.js'],
+                options: {
+                    // File option in your repo
+                    jshintrc: '.jshintrc'
                 }
             }
         },
@@ -102,15 +103,22 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.registerTask('default', ['uglify']);
 
-    // Clean: Add plugins & register task
+    // 'grunt-contrib-clean': Clean files and folders
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.registerTask('clean-build', ['start:clean_build_repo', 'clean:build', 'end:clean_build_repo']);
+    grunt.registerTask('clean-build', ['start:clean_build_repo', 'clean:dev', 'end:clean_build_repo']);
 
-    
+    // 'grunt-contrib-connect': Start a connect web server
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.registerTask('connect', []);
 
-    // Grunt Actual Task - Final Task Loading
-    grunt.registerTask('grunt-build', ['clean:build', 'concat:js', 'concat:css', 'uglify:prod']);
-
+    // 'grunt-browserify': Start a connect web server
+    grunt.loadNpmTasks('grunt-browserify');
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.registerTask('lin', []);
+
+    // Grunt Actual Task - Final Task Loading
+    grunt.registerTask('grunt-build', ['clean:dev', 'concat:js', 'concat:css', 'uglify:prod']);
+
+
 }

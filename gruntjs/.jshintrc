@@ -1,0 +1,12 @@
+{
+    "esversion": 6,
+    "curly": true,
+    "eqnull": true,
+    "eqeqeq": true,
+    "undef": true,
+    "browser": true,
+    "globals": {
+        "console": false,
+        "jQuery": true
+    }
+}

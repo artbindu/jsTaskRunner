@@ -1,5 +1,5 @@
-// import { module } from "./module/module";
-// import './index.css';
+import { module } from "./module/module";
+import './index.css';
 
 function mainBody() { 
     var el = document.createElement("h1");
