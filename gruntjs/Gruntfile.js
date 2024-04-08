@@ -33,17 +33,6 @@ module.exports = function (grunt) {
                 dest: '<%= pkg.buildInfo.dev.repo %>/<%= pkg.buildInfo.dev.css %>'
             }
         },
-        babel: {
-            options: {
-              sourceMap: true,
-              presets: ['@babel/preset-env']
-            },
-            build: {
-              files: {
-                'build/build.js': 'src/**/*.js'
-              }
-            }
-        },
         uglify: {
             prod: {
                 options: {
@@ -79,6 +68,20 @@ module.exports = function (grunt) {
             foo: [1, 2, 3],
             bar: 'hello world',
             baz: false
+        },
+        browserify: {
+            dist: {
+                files: {
+                    // destination for transpiled js : source js
+                    'build/grunt_babel.js': 'src/**/*.js'
+                },
+                options: {
+                    transform: [['babelify', { presets: ["es2015"] }]],
+                    browserifyOptions: {
+                        debug: true
+                    }
+                }
+            }
         }
     });
 
@@ -115,7 +118,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-browserify');
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.registerTask('lin', []);
+    grunt.registerTask('grunt-jshint', ['clean', 'jshint']);
+
+    grunt.registerTask('grunt-babel', [
+        // 'jshint',
+        //'concat', <-- Probably don't need to concat the files, assuming index.es6 imports the necessary modules.
+        'browserify:dist',
+        'uglify'
+    ]);
 
     // Grunt Actual Task - Final Task Loading
     grunt.registerTask('grunt-build', ['clean:dev', 'concat:js', 'concat:css', 'uglify:prod']);

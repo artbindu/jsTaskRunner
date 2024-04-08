@@ -148,3 +148,4 @@ Add plugins: `grunt-contrib-concat`
 ```
     
 ```
+Babel Plugins: [Help](https://stackoverflow.com/questions/41067220/using-babel-grunt-to-work-with-es6-how-to-transform-require-statements)
