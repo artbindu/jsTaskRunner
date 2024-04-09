@@ -26,9 +26,24 @@ gulp.task('build', function() {
     .pipe(babel())
     .pipe(dest('dist/'))
     .pipe(uglify())
-    .pipe(rename({ extname: '.min.js' }))
+    .pipe(rename({ extname: '.js' }))
     .pipe(dest('build/'));
 });
 
-exports.default = gulp.series('clean', 'build');
+var webserver = require('gulp-webserver');
+gulp.task('webserver', function() {
+  gulp.src('src')
+    .pipe(webserver({
+      // host: 'localhost',
+      port: 8008,
+      path: '../public/index.html',
+      // livereload: true,
+      // directoryListing: true,
+      open: true
+    }));
+});
+
+exports.gulp_build = gulp.series('clean', 'build', 'webserver');
+
+// --------------------------------------------------------
 
