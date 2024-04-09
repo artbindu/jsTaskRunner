@@ -1,0 +1,26 @@
+{
+  "name": "gulpjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=16.15.1 <=18.15.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Biswasindhu Mandal",
+    "email": "sindhu.online.24x7@gmail.com​",
+    "url": "https://artbindu.github.io/artbindu"
+  },
+  "license": "MIT",
+  "license_url": "https://github.com/artbindu/jsTaskRunner/gulpjs/LICENSE",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2"
+  }
+}

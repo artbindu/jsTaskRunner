@@ -1,0 +1,10 @@
+# Dependency directories
+node_modules/
+package-lock.json
+
+# build file
+build/
+dist/
+
+# Other jsModule Bundlier
+gruntjs/

@@ -1,0 +1,21 @@
+body {
+    background-color: aqua;
+    /* background-image: url('../images/bg.avif'); */
+}
+
+.cl1 {
+    color: red;
+    font-size: 100px;
+}
+
+.cl2 {
+    color: pink;
+    font-size: 60px;
+}
+
+#my_logo {
+    /* content: url('../images/logo.png'); */
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+}
