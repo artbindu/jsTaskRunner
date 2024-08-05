@@ -16,6 +16,9 @@
   },
   "license": "MIT",
   "license_url": "https://github.com/artbindu/jsTaskRunner/gulpjs/LICENSE",
+  "dependencies": {
+    "gulpjs": "file:"
+  },
   "devDependencies": {
     "gulp": "^5.0.0",
     "gulp-babel": "^8.0.0",
