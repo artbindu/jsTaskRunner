@@ -5,7 +5,10 @@
         "**/.git": true,
         "**/.DS_Store": true,
         ".vscode": true,
-        "**/.vscode": true,
+        "**/build": true,
+        "**/dist": true,
+        "**/package-lock.json": true,
+        "**/.vscode": true
     },
 
     // Controls whether the minimap is shown.
