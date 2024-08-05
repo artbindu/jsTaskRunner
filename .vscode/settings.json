@@ -1,4 +1,6 @@
 {
+    // Default Terminal
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
     // Configure glob patterns for excluding files and folders.
     "files.exclude": {
         "**/node_modules": true,
