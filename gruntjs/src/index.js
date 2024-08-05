@@ -3,7 +3,7 @@ import './index.css';
 
 function mainBody() { 
     var el = document.createElement("h1");
-    el.textContent = "This is First Rollup Project";
+    el.textContent = "This is First GruntJs Project";
     return el;
 }
 function main() {

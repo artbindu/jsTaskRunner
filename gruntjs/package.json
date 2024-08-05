@@ -2,7 +2,6 @@
   "name": "gruntjs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "engines": {
     "node": ">= 16.15.1 <=18.15.0"
   },
@@ -19,8 +18,14 @@
       "css": "style.css"
     }
   },
+  "main": "public/index.js",
   "scripts": {
-    "grunt": "grunt grunt-build"
+    "clean:dev": "grunt clean:dev",
+    "clean:prod": "grunt clean:prod",
+    "clean": "npm run clean:dev && npm run clean:prod",
+    "grunt": "grunt grunt-build",
+    "server": "http-server -o 8087",
+    "start": "npm run grunt && npm run server"
   },
   "keywords": [
     "grunt"
@@ -50,5 +55,9 @@
     "jshint": "^2.13.6",
     "jshint-stylish": "^2.2.1",
     "load-grunt-tasks": "^5.1.0"
+  },
+  "dependencies": {
+    "gruntjs": "file:",
+    "http-server": "^14.1.1"
   }
 }

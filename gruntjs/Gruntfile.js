@@ -128,7 +128,7 @@ module.exports = function (grunt) {
     ]);
 
     // Grunt Actual Task - Final Task Loading
-    grunt.registerTask('grunt-build', ['clean:dev', 'concat:js', 'concat:css', 'uglify:prod']);
+    grunt.registerTask('grunt-build', ['clean:dev', 'concat:js', 'concat:css', 'uglify:dev']);
 
 
 }
