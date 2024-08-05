@@ -4,4 +4,4 @@
 **/build
 
 # other project repos
-gulp
+/gulpjs
